@@ -8,25 +8,25 @@ data class ProfileLink(
     companion object {
         val github = ProfileLink(
             title = "Github",
-            url = "github.com/pwssv67",
+            url = "https://github.com/pwssv67",
             imageId = "" //TODO
         )
 
         val linkedIn = ProfileLink(
             title = "LinkedIn",
-            url = "linkedin.com/in/pwssv67",
+            url = "https://linkedin.com/in/pwssv67",
             imageId = "" //TODO
         )
 
         val website = ProfileLink(
             title = "Website",
-            url = "", //TODO
+            url = "https://", //TODO
             imageId = "" //TODO
         )
 
         val googlePlay = ProfileLink(
             title = "Google Play",
-            url = "", //TODO
+            url = "https://", //TODO
             imageId = "" //TODO
         )
     }

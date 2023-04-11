@@ -4,6 +4,11 @@ import ComposeApp
 
 @main
 struct iosApp: App {
+
+    init() {
+        DIKt.doInitDI()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

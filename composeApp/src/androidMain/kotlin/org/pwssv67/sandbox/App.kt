@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import org.pwssv67.sandbox.di.initDI
 
 class AndroidApp : Application() {
     companion object {
@@ -15,6 +16,7 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+        initDI()
     }
 }
 
