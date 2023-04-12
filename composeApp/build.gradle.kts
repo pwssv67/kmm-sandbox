@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.application)
-    alias(libs.plugins.libres)
     alias(libs.plugins.buildConfig)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.sqlDelight)
@@ -51,7 +50,6 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material)
                 implementation(libs.napier)
-                implementation(libs.libres)
                 implementation(libs.voyager.navigator)
                 implementation(libs.composeImageLoader)
                 implementation(libs.kotlinx.coroutines.core)
@@ -147,13 +145,6 @@ compose.experimental {
     web.application {}
 }
 
-libres {
-    // https://github.com/Skeptick/libres#setup
-}
-tasks.getByPath("desktopProcessResources").dependsOn("libresGenerateResources")
-tasks.getByPath("desktopSourcesJar").dependsOn("libresGenerateResources")
-tasks.getByPath("jsProcessResources").dependsOn("libresGenerateResources")
-
 buildConfig {
   // BuildConfig configuration here.
   // https://github.com/gmazzo/gradle-buildconfig-plugin#usage-in-kts
@@ -171,7 +162,7 @@ sqldelight {
 
 multiplatformResources {
     multiplatformResourcesPackage = "org.pwssv67.sandbox" // required
-    multiplatformResourcesVisibility = MRVisibility.Internal // optional, default Public
+    //multiplatformResourcesVisibility = MRVisibility.Internal // optional, default Public
     iosBaseLocalizationRegion = "en" // optional, default "en"
     multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
 }

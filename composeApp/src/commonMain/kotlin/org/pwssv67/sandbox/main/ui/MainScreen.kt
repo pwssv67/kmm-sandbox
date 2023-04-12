@@ -15,19 +15,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import dev.icerock.moko.resources.getImageByFileName
 import org.pwssv67.sandbox.MR
 import org.pwssv67.sandbox.main.data.AboutRepository
-import org.pwssv67.sandbox.main.data.Technology
+import org.pwssv67.sandbox.main.data.TechnologyInfo
 import org.pwssv67.sandbox.main.di.MainProvider
+import org.pwssv67.sandbox.navigation.Destination
+import org.pwssv67.sandbox.navigation.Navigatable
 import org.pwssv67.sandbox.openUrl
+import org.pwssv67.sandbox.utils.CustomArrangement
+import org.pwssv67.sandbox.utils.ImageUtils
 import org.pwssv67.sandbox.utils.rememberDeferredState
 
 @Composable
-fun MainScreen(repository: AboutRepository = MainProvider.aboutRepository) {
+fun Navigatable.MainScreen(repository: AboutRepository = MainProvider.aboutRepository) {
 
     val scrollState = rememberScrollState()
     Column(modifier = Modifier.fillMaxSize().verticalScroll(scrollState)) {
@@ -56,6 +58,8 @@ fun MainScreen(repository: AboutRepository = MainProvider.aboutRepository) {
 
         technologies?.let { TechnologiesList(it) }
 
+        Spacer(modifier = Modifier.height(16.dp))
+
         links?.forEach {
             SiteLink(link = it.url, text = it.title, icon = { /*TODO*/})
         }
@@ -66,7 +70,7 @@ fun MainScreen(repository: AboutRepository = MainProvider.aboutRepository) {
 private fun SiteLink(link: String, text: String, icon: @Composable () -> Unit) {
     TextButton(
         onClick = { openUrl(link) },
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
         border = BorderStroke(2.dp, MaterialTheme.colors.primary),
         shape = MaterialTheme.shapes.small,
         colors = ButtonDefaults.outlinedButtonColors()
@@ -77,9 +81,9 @@ private fun SiteLink(link: String, text: String, icon: @Composable () -> Unit) {
 }
 
 @Composable
-private fun TechnologiesList(list: List<Technology>) {
+private fun Navigatable.TechnologiesList(list: List<TechnologyInfo>) {
     LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(32.dp),
+        horizontalArrangement = CustomArrangement.SpaceBetweenWithMinimalPadding(16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp),
         modifier = Modifier.wrapContentHeight().fillMaxWidth()
     ) {
@@ -91,9 +95,14 @@ private fun TechnologiesList(list: List<Technology>) {
 }
 
 @Composable
-private fun TechnologyItem(technology: Technology) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        val imageResource = getImageByName(technology.image ?: "")
+private fun Navigatable.TechnologyItem(technology: TechnologyInfo) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(horizontal = 16.dp).clickable {
+            this.navigateTo(Destination.Technology(technology))
+        }
+    ) {
+        val imageResource = ImageUtils.getImageByName(technology.image ?: "")
         if (imageResource != null) {
             Image(painter = painterResource(imageResource), null, Modifier.size(96.dp))
         } else {
@@ -101,8 +110,4 @@ private fun TechnologyItem(technology: Technology) {
         }
         Text(technology.title, textAlign = TextAlign.Center, modifier = Modifier.width(IntrinsicSize.Min))
     }
-}
-
-private fun getImageByName(name: String): ImageResource? {
-    return MR.images.getImageByFileName(name)
 }
