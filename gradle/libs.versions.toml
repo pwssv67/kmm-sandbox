@@ -20,6 +20,8 @@ multiplatformSettings = "1.0.0"
 koin = "3.4.0"
 kstore = "0.5.0"
 sqlDelight = "2.0.0-alpha05"
+moko = "0.21.2"
+moko-graphics = "0.9.0"
 
 [libraries]
 
@@ -45,6 +47,9 @@ sqlDelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", versi
 sqlDelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqlDelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sqlDelight-driver-sqljs = { module = "app.cash.sqldelight:sqljs-driver", version.ref = "sqlDelight" }
+moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko" }
+moko-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko" }
+moko-graphics = { module = "dev.icerock.moko:graphics", version.ref = "moko-graphics" }
 
 [plugins]
 
@@ -56,3 +61,4 @@ libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+moko = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko" }

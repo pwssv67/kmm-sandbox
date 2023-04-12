@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="name">Egor Smolianinov</string>
+    <string name="loading">Loading...</string>
+    <string name="used_technologies">Used Technologies:</string>
+</resources>

@@ -1,3 +1,5 @@
+import dev.icerock.gradle.MRVisibility
+
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose)
@@ -7,6 +9,7 @@ plugins {
     alias(libs.plugins.buildConfig)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.moko)
 }
 
 kotlin {
@@ -59,6 +62,9 @@ kotlin {
                 implementation(libs.multiplatformSettings)
                 implementation(libs.koin.core)
                 implementation(libs.kstore)
+
+                implementation(libs.moko.resources)
+                implementation(libs.moko.compose)
             }
         }
 
@@ -161,4 +167,11 @@ sqldelight {
       packageName.set("org.company.app.db")
     }
   }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "org.pwssv67.sandbox" // required
+    multiplatformResourcesVisibility = MRVisibility.Internal // optional, default Public
+    iosBaseLocalizationRegion = "en" // optional, default "en"
+    multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
 }

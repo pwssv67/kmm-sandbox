@@ -1,10 +1,17 @@
 package org.pwssv67.sandbox.main.data
 
+import dev.icerock.moko.resources.compose.readTextAsState
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import org.pwssv67.sandbox.MR
+import org.pwssv67.sandbox.utils.readText
+
 
 interface AboutRepository {
     suspend fun getDescription(): String
     suspend fun getLinks(): List<ProfileLink>
 
+    suspend fun getTechnologies(): List<Technology>
 }
 
 class AboutRepositoryImpl(): AboutRepository {
@@ -16,5 +23,9 @@ class AboutRepositoryImpl(): AboutRepository {
 
     override suspend fun getLinks(): List<ProfileLink> {
         return LinkProviderImpl.getLinks()
+    }
+
+    override suspend fun getTechnologies(): List<Technology> {
+        return Json.decodeFromString(MR.files.technology_list.readText())
     }
 }

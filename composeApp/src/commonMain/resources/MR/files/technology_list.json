@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Kotlin Multiplatform",
+    "image": "kmm",
+    "description": "Kotlin Multiplatform is a framework for sharing code between iOS, Android, web and desktop frontend apps, and backend services.\nIt is a part of the Kotlin ecosystem, and is based on the Kotlin language and the Kotlin/Native compiler."
+  },
+  {
+    "title": "Ktor",
+    "image": "ktor",
+    "description": "Ktor is a set of libraries for building asynchronous servers and clients using the Kotlin programming language, utilising all language's features."
+  },
+  {
+    "title": "Compose Multiplatform",
+    "image": "compose",
+    "description": "Compose Multiplatform is a library for building declarative UI for Android, iOS, Web and Desktop using the Kotlin programming language."
+  },
+  {
+    "title": "Koin",
+    "image": "koin",
+    "description": "Koin is a pragmatic lightweight dependency injection framework for Kotlin language, with full support for Kotlin Multiplatform."
+  },
+  {
+    "title": "Moko",
+    "image": "moko",
+    "description": "MOKO is a library for providing resources for Kotlin Multiplatform projects."
+  }
+]
